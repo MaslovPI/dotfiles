@@ -77,17 +77,12 @@ return {
 					--  the definition of its *type*, not where it was *defined*.
 					map("grt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype Definition")
 
-					-- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
 					---@param client vim.lsp.Client
 					---@param method vim.lsp.protocol.Method
 					---@param bufnr? integer some lsp support methods only in specific files
 					---@return boolean
 					local function client_supports_method(client, method, bufnr)
-						if vim.fn.has("nvim-0.11") == 1 then
-							return client:supports_method(method, bufnr)
-						else
-							return client.supports_method(method, { bufnr = bufnr })
-						end
+						return client:supports_method(method, bufnr)
 					end
 
 					-- The following two autocommands are used to highlight references of the
@@ -227,6 +222,8 @@ return {
 						},
 					},
 				},
+				marksman = {},
+				grammarly = {},
 			}
 
 			-- Ensure the servers and tools above are installed
@@ -244,11 +241,18 @@ return {
 			-- for you, so that they are available from within Neovim.
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
-				"stylua", -- Used to format Lua code
+				-- lua
+				"stylua",
+				-- kotlin
 				"ktlint",
+				-- go
 				"gofumpt",
 				"golines",
 				"goimports-reviser",
+				-- markdown
+				"prettier",
+				"markdownlint-cli2",
+				"markdown-toc",
 			})
 			require("mason").setup({
 				registries = {
