@@ -32,7 +32,6 @@ return {
 			lua = { "stylua" },
 			kotlin = { "ktlint" },
 			go = { "goimports_reviser", "gofumpt", "golines" },
-			markdown = { "prettier", "markdownlint-cli2", "markdown-toc" },
 		},
 	},
 }

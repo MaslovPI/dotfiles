@@ -31,7 +31,9 @@ return {
 			opts = {},
 		},
 		"folke/lazydev.nvim",
+		{ "saghen/blink.compat", lazy = true, verson = false },
 	},
+	config = true,
 	--- @module 'blink.cmp'
 	--- @type blink.cmp.Config
 	opts = {
@@ -76,10 +78,14 @@ return {
 		},
 
 		sources = {
-			default = { "lsp", "path", "snippets", "lazydev" },
+			default = { "lsp", "path", "snippets", "lazydev", "obsidian", "obsidian_new", "obsidian_tags" },
 			providers = {
 				lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
+				obsidian = { name = "obsidian", module = "blink.compat.source" },
+				obsidian_new = { name = "obsidian_new", module = "blink.compat.source" },
+				obsidian_tags = { name = "obsidian_tags", module = "blink.compat.source" },
 			},
+			compat = { "obsidian", "obsidian_new", "obsidian_tags" },
 		},
 
 		snippets = { preset = "luasnip" },

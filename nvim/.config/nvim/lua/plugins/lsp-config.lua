@@ -223,7 +223,6 @@ return {
 					},
 				},
 				marksman = {},
-				grammarly = {},
 			}
 
 			-- Ensure the servers and tools above are installed
@@ -249,10 +248,6 @@ return {
 				"gofumpt",
 				"golines",
 				"goimports-reviser",
-				-- markdown
-				"prettier",
-				"markdownlint-cli2",
-				"markdown-toc",
 			})
 			require("mason").setup({
 				registries = {
