@@ -1,0 +1,58 @@
+#!/bin/bash
+# This function runs the tests via go test, captures information
+# such as the coverage and the detail of the tests run and presents
+# it in a more effective manner. The function takes one parameter 
+# that is the path to the package to test. 
+# 
+function test_package() {
+   PASS="👍"
+   FAIL="👎"
+   CURRENT_PATH=$(pwd)
+   PACKAGE_PATH=$1
+   cd ${PACKAGE_PATH}
+   
+   # run test with detail and coverage and save to file
+   go test -test.v -cover > output.test
+   RETVAL=$?
+   # extract the coverage and massage it into a number so 
+   # that we can bracket the value and render it based on
+   # the range
+   COVERAGE=$(cat output.test | grep --text "^coverage" | cut -d ' ' -f 2)
+   COVERAGE_NUMBER=${COVERAGE_NUMBER//[.%]/}
+   case ${COVERAGE_NUMBER} in
+     [0-4][0-9][0-9]|[0-9][0-9]) COLOUR="31m" ; ICON="🙈" ;;
+     [5-7][0-9][0-9]) COLOUR="33m" ; ICON="🙉" ;;
+     *) COLOUR="32m" ; ICON="🐒"
+   esac
+   # determine the outcome of the test and provide total
+   # summary. If there are test failures, process the 
+   # output and show the detail
+   echo "Package: $PACKAGE_PATH"
+   if [[ ${RETVAL} != 0 ]]; then
+     echo "${FAIL} - There are test failures!"
+     echo "Coverage: \033[0;${COLOUR}${COVERAGE}\033[0m - ${ICON}"
+     
+     cat output.test | grep --text "^--- " > summary.test
+     sed -e 's/--- PASS/\\033[0;32mPASS\\033[0m/g' \
+         -e 's/--- FAIL/\\033[0;31mFAIL\\033[0m/g' \
+         summary.test > summary.colour
+     while read -r LINE; do echo -e "${LINE}"; done < summary.colour
+     rm summary.colour
+     rm summary.test
+   else
+     echo "${PASS} - All Test Passed!" 
+     echo "Coverage: \033[0;${COLOUR}${COVERAGE}\033[0m - ${ICON}"
+   fi
+   echo ""
+   rm output.test
+   cd ${CURRENT_PATH}
+   # we return the original value returned by  `go test`
+   # so that the calling context can still perform any
+   # other operation based on the outcome of the tests
+   return ${RETVAL}
+}
+# we can now invoke test package on multiple paths and have
+# a test summary for each package.
+for PACKAGE in *; do
+  test_package $PACKAGE
+done
