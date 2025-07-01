@@ -124,3 +124,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 --Obsidian
 vim.opt.conceallevel = 1
+
+--paste without losing buffer
+vim.keymap.set("v", "<leader>p", '"_dP')

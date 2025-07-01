@@ -140,7 +140,8 @@ inoremap <C-k> <Action>(PopupMenu-selectPrev)
 
 "" Leader commands
 "" ========================================================
-
+" Paste
+map <leader>p "_dP
 " Comment lines
 map <leader>c <action>(CommentByLineComment)
 
