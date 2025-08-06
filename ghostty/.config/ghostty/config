@@ -4,3 +4,6 @@ font-size = 16
 background-opacity = 0.9
 gtk-titlebar = false
 shell-integration-features = sudo
+custom-shader = shaders/cursor_smear.glsl
+custom-shader-animation = true
+
