@@ -249,6 +249,8 @@ return {
 				"gofumpt",
 				"golines",
 				"goimports-reviser",
+				-- TS
+				"eslint_d",
 			})
 			require("mason").setup({
 				registries = {
