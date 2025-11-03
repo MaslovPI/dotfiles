@@ -106,3 +106,6 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+
+# --vim cmd
+bindkey -v
