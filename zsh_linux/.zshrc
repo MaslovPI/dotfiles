@@ -74,10 +74,6 @@ _fzf_comprun() {
   esac
 }
 
-# Obsidian
-alias oo='cd $HOME/cozy/notes/'
-alias or='nvim $HOME/cozy/notes/inbox/*.md'
-
 # ----- Bat (better cat) -----
 
 export BAT_THEME="Catppuccin Mocha"
