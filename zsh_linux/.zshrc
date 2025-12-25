@@ -74,10 +74,6 @@ _fzf_comprun() {
   esac
 }
 
-# Obsidian
-alias oo='cd $HOME/cozy/notes/'
-alias or='nvim $HOME/cozy/notes/inbox/*.md'
-
 # ----- Bat (better cat) -----
 
 export BAT_THEME="Catppuccin Mocha"
@@ -109,3 +105,9 @@ function y() {
 
 # --vim cmd
 bindkey -v
+
+export PATH=$PATH:$HOME/.local/opt/go/bin
+export PATH=$PATH:$HOME/go/bin
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
