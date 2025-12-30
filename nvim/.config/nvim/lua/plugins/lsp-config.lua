@@ -251,8 +251,11 @@ return {
 				"goimports-reviser",
 				-- TS
 				"eslint_d",
+				"prettier",
 				-- python
 				"ruff",
+				-- shell
+				"shfmt",
 			})
 			require("mason").setup({
 				registries = {
