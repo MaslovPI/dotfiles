@@ -25,7 +25,7 @@ bindkey '^[[B' history-search-forward
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-source ~/infrastructure/.aws-aliases.sh
+source ~/workspace/github.com/sedna/infrastructure/.aws-aliases.sh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
