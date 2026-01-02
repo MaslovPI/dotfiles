@@ -254,6 +254,8 @@ return {
 				"prettier",
 				-- python
 				"ruff",
+				"black",
+				"isort",
 				-- shell
 				"shfmt",
 			})
