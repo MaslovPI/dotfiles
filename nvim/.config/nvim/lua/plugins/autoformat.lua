@@ -43,6 +43,7 @@ return {
 			end,
 			javascript = { "prettier" },
 			typescript = { "prettier" },
+			json = { "prettier" },
 		},
 	},
 }
