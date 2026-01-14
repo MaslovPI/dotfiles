@@ -127,3 +127,6 @@ vim.opt.conceallevel = 1
 
 --paste without losing buffer
 vim.keymap.set("v", "<leader>p", '"_dP')
+
+--Spellcheck
+vim.keymap.set("n", "<leader>sc", "<cmd>setlocal spell spelllang=en_us<CR>", { desc = "Enable [S]pell [C]heck" })
