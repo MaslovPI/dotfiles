@@ -5,7 +5,11 @@ return {
 		require("nvim-treesitter.configs").setup({
 			auto_install = true,
 			ensure_installed = { "regex" },
-			highlight = { enable = true },
+			ignore_install = { "csv" },
+			highlight = {
+				enable = true,
+				disable = { "csv" },
+			},
 			indent = { enable = true },
 		})
 	end,
