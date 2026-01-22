@@ -143,7 +143,7 @@ inoremap <C-k> <Action>(PopupMenu-selectPrev)
 " Paste
 map <leader>p "_dP
 " Comment lines
-map <leader>c <action>(CommentByLineComment)
+map gcc <action>(CommentByLineComment)
 
 " Jump around with easymotion
 map <leader>j <Plug>(easymotion-s)
@@ -162,7 +162,7 @@ map <leader>wu <Action>(Unsplit)
 map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
 
 " Display options
-map <leader>dd <action>(ToggleDistractionFreeMode)
+map <leader>bz <action>(ToggleDistractionFreeMode)
 map <leader>dz <action>(ToggleZenMode)
 map <leader>df <action>(ToggleFullScreen)
 
