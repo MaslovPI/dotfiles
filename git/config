@@ -18,7 +18,6 @@
 
 [pull]
   rebase = true
-  ff = "only"
 
 [push]
 	default = "simple"
@@ -53,9 +52,6 @@
 	lt = "log --tags --decorate --simplify-by-decoration --oneline"
 	please = "push --force-with-lease"
 	unshallow = "fetch --prune --tags --unshallow"
-
-[merge]
-  conflictStyle = zdiff3
 
 [grep]
   extendRegexp = true
