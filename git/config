@@ -1,0 +1,62 @@
+[user]
+	email = dnfanl@gmail.com
+	name = Pavel Maslov
+  signingkey = 
+[commit]
+  gpgsign = true
+[core]
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  side-by-side = true
+[tag]
+  gpgsign = true
+[init]
+	defaultBranch = main
+
+[pull]
+  rebase = true
+  ff = "only"
+
+[push]
+	default = "simple"
+	followTags = true
+	autoSetupRemote = true
+
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+
+[rerere]
+	autoUpdate = true
+	enabled = true
+
+[fetch]
+	all = true
+	prune = true
+
+[diff]
+	algorithm = "histogram"
+	mnemonicPrefix = true
+	colorMoved = "plain"
+	renames = true
+
+[alias]
+	changed = "show --pretty=\"format:\" --name-only"
+	commend = "commit --amend --no-edit"
+	count = "shortlog -sn"
+	g = "grep --break --heading --line-number"
+	gi = "grep --break --heading --line-number -i"
+	lt = "log --tags --decorate --simplify-by-decoration --oneline"
+	please = "push --force-with-lease"
+	unshallow = "fetch --prune --tags --unshallow"
+
+[merge]
+  conflictStyle = zdiff3
+
+[grep]
+  extendRegexp = true
+  lineNumber = true
