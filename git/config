@@ -42,6 +42,7 @@
 	mnemonicPrefix = true
 	colorMoved = "plain"
 	renames = true
+	tool = vimdiff
 
 [alias]
 	changed = "show --pretty=\"format:\" --name-only"
