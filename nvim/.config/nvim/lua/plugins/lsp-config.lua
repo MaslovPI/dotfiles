@@ -40,6 +40,7 @@ return {
 						vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 					end
 
+					map("<leader>gh", vim.lsp.buf.hover, "[H]over")
 					-- Rename the variable under your cursor.
 					--  Most Language Servers support renaming across files, etc.
 					map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
@@ -182,48 +183,84 @@ return {
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
-				-- clangd = {},
+				bashls = {},
+				dockerls = {},
+
 				gopls = {
 					cmd = { "gopls" },
 					filetypes = { "go", "gomod", "gowork", "gotmpl" },
 					settings = {
 						gopls = {
-							completion = {
-								completeUnimported = true,
-								usePlaceholders = true,
-								analyses = {
-									unused = true,
-								},
+							-- ✓ Completion settings
+							usePlaceholders = true,
+							completeUnimported = true,
+							staticcheck = true,
+							semanticTokens = true,
+							--
+							-- ✓ Hints
+							hints = {
+								assignVariableTypes = true,
+								compositeLiteralFields = true,
+								compositeLiteralTypes = true,
+								constantValues = true,
+								functionTypeParameters = true,
+								parameterNames = true,
+								rangeVariableTypes = true,
+							},
+
+							-- ✓ Analyses
+							analyses = {
+								fieldalignment = true,
+								nilness = true,
+								unusedparams = true,
+								unusedwrite = true,
+								useany = true,
 							},
 						},
 					},
 				},
-				pyright = {},
-				-- rust_analyzer = {},
-				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-				--
-				-- Some languages (like typescript) have entire language plugins that can be useful:
-				--    https://github.com/pmizio/typescript-tools.nvim
-				--
-				-- But for many setups, the LSP (`ts_ls`) will work just fine
-				ts_ls = {},
-				--
-				--kotlin_lsp = {},
 
+				pyright = {},
+				ts_ls = {},
 				lua_ls = {
-					-- cmd = { ... },
-					-- filetypes = { ... },
-					-- capabilities = {},
 					settings = {
+						format = {
+							enable = false, -- let conform handle the formatting
+						},
+						telemetry = { enable = false },
 						Lua = {
+							workspace = {
+								checkThirdParty = false,
+								library = {
+									vim.env.VIMRUNTIME,
+									"${3rd}/luv/library",
+									"${3rd}/busted/library",
+								},
+							},
+							codeLens = {
+								enable = true,
+							},
+							doc = {
+								privateName = { "^_" },
+							},
+							hint = {
+								enable = true,
+								setType = false,
+								paramType = true,
+								paramName = "Disable",
+								semicolon = "Disable",
+								arrayIndex = "Disable",
+							},
 							completion = {
 								callSnippet = "Replace",
 							},
-							diagnostics = { disable = { "missing-fields" } },
+							-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+							-- diagnostics = { disable = { "missing-fields" } },
 						},
 					},
 				},
 				marksman = {},
+				templ = {},
 			}
 
 			-- Ensure the servers and tools above are installed
