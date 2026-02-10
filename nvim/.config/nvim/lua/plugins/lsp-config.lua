@@ -261,6 +261,7 @@ return {
 				},
 				marksman = {},
 				templ = {},
+				htmx = {},
 			}
 
 			-- Ensure the servers and tools above are installed
