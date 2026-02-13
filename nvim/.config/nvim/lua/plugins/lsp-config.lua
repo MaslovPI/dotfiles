@@ -266,7 +266,7 @@ return {
 					filetypes = { "templ" },
 					root_dir = require("lspconfig.util").root_pattern("go.work", "go.mod", "go.sum", ".git"),
 				},
-				htmx = {},
+				-- htmx = {},
 			}
 
 			-- Ensure the servers and tools above are installed
