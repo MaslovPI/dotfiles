@@ -260,8 +260,13 @@ return {
 					},
 				},
 				marksman = {},
-				templ = {},
-				htmx = {},
+				templ = {
+					cmd = { "templ", "lsp" },
+					capabilities = capabilities,
+					filetypes = { "templ" },
+					root_dir = require("lspconfig.util").root_pattern("go.work", "go.mod", "go.sum", ".git"),
+				},
+				-- htmx = {},
 			}
 
 			-- Ensure the servers and tools above are installed
