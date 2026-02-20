@@ -301,6 +301,8 @@ return {
 				"isort",
 				-- shell
 				"shfmt",
+				-- xml
+				"xmlformatter",
 			})
 			require("mason").setup({
 				registries = {
