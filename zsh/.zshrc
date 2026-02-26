@@ -117,6 +117,10 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+#
+#Go execution path
+export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
