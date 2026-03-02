@@ -267,6 +267,7 @@ return {
 					root_dir = require("lspconfig.util").root_pattern("go.work", "go.mod", "go.sum", ".git"),
 				},
 				-- htmx = {},
+				lemminx = {},
 			}
 
 			-- Ensure the servers and tools above are installed
@@ -301,8 +302,6 @@ return {
 				"isort",
 				-- shell
 				"shfmt",
-				-- xml
-				"xmlformatter",
 			})
 			require("mason").setup({
 				registries = {

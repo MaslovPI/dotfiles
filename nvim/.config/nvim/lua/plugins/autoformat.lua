@@ -44,7 +44,7 @@ return {
 			javascript = { "prettier" },
 			typescript = { "prettier" },
 			json = { "prettier" },
-			xml = { "xmlformatter" },
+			xml = { "lemminx" },
 		},
 	},
 }
